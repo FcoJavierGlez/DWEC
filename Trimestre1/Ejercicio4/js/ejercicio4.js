@@ -5,7 +5,7 @@
  * @since 06/10/2019
  */
 
-var valores = [true, 5, false, "hola", "adios", 2];
+let valores = [true, 5, false, "hola", "adios", 2];
 
 //Apartado 1: Comparamos caracteres
 if (valores[3]>valores[4]) console.log("El mayor entre \"hola\" y \"adios\": "+valores[3]);

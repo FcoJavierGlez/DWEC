@@ -5,7 +5,7 @@
  * @since 06/10/2019
  */
 
-var a=5;
+let a=5;
 
 console.log("El factorial de "+a+" es: ");
 

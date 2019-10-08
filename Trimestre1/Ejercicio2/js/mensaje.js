@@ -5,8 +5,8 @@
  * @since 06/10/2019
  */
 
-var saludo="Hola mundo!!";
-var mensaje1="Qué fácil es incluir \'comillas simples\'";
-var mensaje2="Qué fácil es incluir \"comillas dobles\"";
+let saludo="Hola mundo!!";
+let mensaje1="Qué fácil es incluir \'comillas simples\'";
+let mensaje2="Qué fácil es incluir \"comillas dobles\"";
 
 alert(saludo+"\n"+mensaje1+"\n"+mensaje2);
