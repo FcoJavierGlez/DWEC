@@ -9,21 +9,33 @@
 
 let original=prompt("Inserte una cadena de caracteres.");
 
-original=original.toUpperCase().replace(/ /g,"").replace(/Á/g,"A").replace(/É/g,"E").replace(/Í/g,"I").replace(/Ó/g,"O").replace(/Ú/g,"U");
 
 (esPalindromo(original)) ? console.log("Es palíndromo.") : console.log("No es palíndromo.");
 
 
 
 
+/**
+ * Devuelve valor booleano indicando si la cadena introducida como parámetro es o no un palíndromo.
+ * 
+ * @param {String} cadena Cadena a comprobar si es palíndromo
+ * @return {Boolean} Valor de la comprobación
+ */
+function esPalindromo(cadena) {
+    cadena=cadena.toUpperCase().replace(/ /g,"").replace(/Á/g,"A").replace(/É/g,"E").replace(/Í/g,"I").replace(/Ó/g,"O").replace(/Ú/g,"U");
+    return (cadena==reverseString(cadena)) ? true : false;
+}
+
+
+/**
+ * Devuelve una cadena invertida de la cadena introducida como parámetro.
+ * 
+ * @param {String} a Cadena de entrada
+ * @return {String} Cadena invertida devuelta
+ */
 function reverseString(a) {
     let salida="";
     for (let i=a.length; i>0; i--) 
         salida+=a.substring(i-1,i);
     return salida;
-}
-
-
-function esPalindromo(a) {
-    return (a==reverseString(a)) ? true : false;
 }
