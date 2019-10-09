@@ -14,10 +14,9 @@ let a=Number.parseInt(prompt("Inserte un número entero."));
 
 
 /**
- * Devuelve valor booleano indicando si el número de entrada es par o no.
+ * Imprime por consola indicando si el número de entrada es par o no.
  * 
  * @param {number} a Valor numérico a comprobar su paridad.
- * @return {boolean} Valor de la comprobación.
  */
 function esPar(a) {
     return (a%2==0) ? console.log(a+" es par.") : console.log(a+" es impar.")
