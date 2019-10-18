@@ -18,20 +18,49 @@ let tamanoVentanaNavegador=function(){
 
 let informacion=function(event) {
     let evento = event;
-    let posicion = [];
+    let posicion = [evento.clientX, evento.clientY];
     let tamannoVent = tamanoVentanaNavegador();
     if(evento.type=="click") {
-        posicion=[evento.clientX, evento.clientY];
-        document.getElementById("info").innerHTML = "";
         if(posicion[0]<(tamannoVent[0]/2) && posicion[1]<(tamannoVent[1]/2)) 
-            document.getElementById("info").innerHTML += '<p style="text-align:center"><b>Arriba izquierda</b></p>';
+            document.getElementById("info").innerHTML = '<p style="text-align:center"><b>Arriba izquierda</b></p>';
         else if (posicion[0]>(tamannoVent[0]/2) && posicion[1]<(tamannoVent[1]/2))
-            document.getElementById("info").innerHTML += '<p style="text-align:center"><b>Arriba derecha</b></p>';
+            document.getElementById("info").innerHTML = '<p style="text-align:center"><b>Arriba derecha</b></p>';
         else if (posicion[0]<(tamannoVent[0]/2) && posicion[1]>(tamannoVent[1]/2))
-            document.getElementById("info").innerHTML += '<p style="text-align:center"><b>Abajo izquierda</b></p>';
+            document.getElementById("info").innerHTML = '<p style="text-align:center"><b>Abajo izquierda</b></p>';
         else
-            document.getElementById("info").innerHTML += '<p style="text-align:center"><b>Abajo derecha</b></p>';
+            document.getElementById("info").innerHTML = '<p style="text-align:center"><b>Abajo derecha</b></p>';
     }
 }
 
 document.onclick = informacion;
+
+
+
+/* let tamanoVentanaNavegador=function(){
+    // Adaptada de http://www.howtocreate.co.uk/tutorials/javascript/browserwindow
+    let dimensiones = [];
+    if(typeof(window.innerWidth) == 'number') 
+        dimensiones = [window.innerWidth, window.innerHeight];
+    return dimensiones;
+}
+
+let posicion=function(posicion, tamannoVent) {
+    if (posicion[0] < (tamannoVent[0] / 2) && posicion[1] < (tamannoVent[1] / 2))
+        return '<p style="text-align:center"><b>Arriba izquierda</b></p>';
+    else if (posicion[0] > (tamannoVent[0] / 2) && posicion[1] < (tamannoVent[1] / 2))
+        return '<p style="text-align:center"><b>Arriba derecha</b></p>';
+    else if (posicion[0] < (tamannoVent[0] / 2) && posicion[1] > (tamannoVent[1] / 2))
+        return '<p style="text-align:center"><b>Abajo izquierda</b></p>';
+    else
+        return '<p style="text-align:center"><b>Abajo derecha</b></p>';
+}
+
+let informacion=function(event) {
+    let evento = event;
+    let posicion = [evento.clientX, evento.clientY];
+    let tamannoVent = tamanoVentanaNavegador();
+    if(evento.type=="click") {
+        document.getElementById("info").innerHTML = "";
+        document.getElementById("info").innerHTML = posicion(posicion, tamannoVent);
+    }
+} */
