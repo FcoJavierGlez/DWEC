@@ -8,6 +8,17 @@
  * @since 17/10/2019
  */
 
+let posiciones=function(posicion, tamannoVent) {
+    if (posicion[0] < (tamannoVent[0] / 2) && posicion[1] < (tamannoVent[1] / 2))
+        document.getElementById("info").innerHTML = '<p style="text-align:center"><b>Arriba izquierda</b></p>';
+    else if (posicion[0] > (tamannoVent[0] / 2) && posicion[1] < (tamannoVent[1] / 2))
+        document.getElementById("info").innerHTML = '<p style="text-align:center"><b>Arriba derecha</b></p>';
+    else if (posicion[0] < (tamannoVent[0] / 2) && posicion[1] > (tamannoVent[1] / 2))
+        document.getElementById("info").innerHTML = '<p style="text-align:center"><b>Abajo izquierda</b></p>';
+    else
+        document.getElementById("info").innerHTML = '<p style="text-align:center"><b>Abajo derecha</b></p>';
+}
+
 let tamanoVentanaNavegador=function(){
     // Adaptada de http://www.howtocreate.co.uk/tutorials/javascript/browserwindow
     let dimensiones = [];
@@ -21,14 +32,7 @@ let informacion=function(event) {
     let posicion = [evento.clientX, evento.clientY];
     let tamannoVent = tamanoVentanaNavegador();
     if(evento.type=="click") {
-        if(posicion[0]<(tamannoVent[0]/2) && posicion[1]<(tamannoVent[1]/2)) 
-            document.getElementById("info").innerHTML = '<p style="text-align:center"><b>Arriba izquierda</b></p>';
-        else if (posicion[0]>(tamannoVent[0]/2) && posicion[1]<(tamannoVent[1]/2))
-            document.getElementById("info").innerHTML = '<p style="text-align:center"><b>Arriba derecha</b></p>';
-        else if (posicion[0]<(tamannoVent[0]/2) && posicion[1]>(tamannoVent[1]/2))
-            document.getElementById("info").innerHTML = '<p style="text-align:center"><b>Abajo izquierda</b></p>';
-        else
-            document.getElementById("info").innerHTML = '<p style="text-align:center"><b>Abajo derecha</b></p>';
+        posiciones(posicion, tamannoVent);
     }
 }
 
