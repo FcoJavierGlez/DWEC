@@ -23,7 +23,7 @@ let muestraInformacion=function(mensaje) {
 }
 
 let informacion=function(event) {
-    let evento = event || window.event;
+    let evento = event;
 
     if (evento.type=="mousemove") {
         document.getElementById("info").style.backgroundColor='#FFF';
@@ -33,10 +33,12 @@ let informacion=function(event) {
         muestraInformacion(["Click","Navegador [x,y]: ["+evento.clientX+","+evento.clientY+"]","Página [x,y]: ["+evento.pageX+","+evento.pageY+"]"]);
     } else if (evento.type=="keypress") {
         document.getElementById("info").style.backgroundColor='#CCE6FF';
-        muestraInformacion(["Teclado","Caracter: ["+String.fromCharCode(evento.charCode)+"]","Código: ["+evento.keyCode+"]"]);
+        muestraInformacion(["Teclado","Caracter: ["+evento.key+"]","Código: ["+evento.code+"]"]);
     }
 } 
 
-document.onmousemove = informacion;
-document.onkeypress = informacion;
-document.onclick = informacion;
+window.onload=function() {
+    document.onmousemove = informacion;
+    document.onkeypress = informacion;
+    document.onclick = informacion;
+}
