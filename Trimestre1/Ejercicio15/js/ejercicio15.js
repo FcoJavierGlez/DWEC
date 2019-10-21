@@ -14,31 +14,33 @@
  * @author Fco Javier González Sabariego
  * @since 17/10/2019
  */
-
-let muestraInformacion=function(mensaje) {
-    document.getElementById("info").innerHTML = '<h1>'+mensaje[0]+'</h1>';
-    for(let i=1; i<mensaje.length; i++) {
-        document.getElementById("info").innerHTML += '<p>'+mensaje[i]+'</p>';
+{
+    let elemento=document.getElementById("info");
+    let muestraInformacion=function(mensaje) {
+        elemento.innerHTML = '<h1>'+mensaje[0]+'</h1>';
+        for(let i=1; i<mensaje.length; i++) {
+            elemento.innerHTML += '<p>'+mensaje[i]+'</p>';
+        }
     }
-}
 
-let informacion=function(event) {
-    let evento = event;
+    let informacion=function(event) {
+        let evento = event;
 
-    if (evento.type=="mousemove") {
-        document.getElementById("info").style.backgroundColor='#FFF';
-        muestraInformacion(["Movimiento del ratón","Navegador [x,y]: ["+evento.clientX+","+evento.clientY+"]","Página [x,y]: ["+evento.pageX+","+evento.pageY+"]"]);
-    } else if (evento.type=="click") {
-        document.getElementById("info").style.backgroundColor='#FFFFCC';
-        muestraInformacion(["Click","Navegador [x,y]: ["+evento.clientX+","+evento.clientY+"]","Página [x,y]: ["+evento.pageX+","+evento.pageY+"]"]);
-    } else if (evento.type=="keypress") {
-        document.getElementById("info").style.backgroundColor='#CCE6FF';
-        muestraInformacion(["Teclado","Caracter: ["+evento.key+"]","Código: ["+evento.code+"]"]);
+        if (evento.type=="mousemove") {
+            elemento.style.backgroundColor='#FFF';
+            muestraInformacion(["Movimiento del ratón","Navegador [x,y]: ["+evento.clientX+","+evento.clientY+"]","Página [x,y]: ["+evento.pageX+","+evento.pageY+"]"]);
+        } else if (evento.type=="click") {
+            elemento.style.backgroundColor='#FFFFCC';
+            muestraInformacion(["Click","Navegador [x,y]: ["+evento.clientX+","+evento.clientY+"]","Página [x,y]: ["+evento.pageX+","+evento.pageY+"]"]);
+        } else if (evento.type=="keypress") {
+            elemento.style.backgroundColor='#CCE6FF';
+            muestraInformacion(["Teclado","Caracter: ["+evento.key+"]","Código: ["+evento.code+"]"]);
+        }
+    } 
+
+    window.onload=function() {
+        document.onmousemove = informacion;
+        document.onkeypress = informacion;
+        document.onclick = informacion;
     }
-} 
-
-window.onload=function() {
-    document.onmousemove = informacion;
-    document.onkeypress = informacion;
-    document.onclick = informacion;
 }
