@@ -42,5 +42,4 @@
     window.onload=function() {
         document.onclick = informacion;
     }
-
 }
