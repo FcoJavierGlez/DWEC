@@ -3,33 +3,27 @@
  * argumento. A partir de la cadena que se le pasa, la función determina si esa cadena está formada
  * sólo por mayúsculas, sólo por minúsculas o por una mezcla de ambas.
  * 
- * @author Fco Javier González Sabariego
- * @since 09/10/2019
- */
-
-let a=prompt("Inserte una cadena de caracteres.");
-let minusc=false;
-let mayusc=false;
-
-infoCadena(a);
-
-
-/**
- * Devuelve información por consola de la cadena de entrada indicando si está compuesta solo por caracteres en mayúscula, en minúscula o mixtos.
+ * Actualización: script introducido en un bloque {}, simplificación del ejercicio usando solo comparaciones entre cadenas en vez de caracteres.
  * 
- * @param {String} a Cadena de entrada.
+ * @author Fco Javier González Sabariego
+ * @since 09/10/2019 || actualización: 24/10/2019
  */
-function infoCadena(a) {
-    for (let i=0; i<a.length; i++) 
-        (a.substring(i,i+1)==a.substring(i,i+1).toUpperCase()) ? mayusc=true : minusc=true;
-    imprimeInfo();
-}
+{
+    /**
+     * Devuelve si la cadena pasada por parámetro contiene solo mayúsculas, solo minúsculas o ambas.
+     * 
+     * @param {String} a Cadena pasada por parámetro
+     * @return {String} Información insertada en un párrafo para ser usada con un innerHTML
+     */
+    let info=function (a) {
+        if (a==a.toUpperCase()) return "<p><b>La cadena \""+a+"\" está en mayúsculas.</b></p>";
+        else return (a==a.toLowerCase()) ? "<p><b>La cadena \""+a+"\" está en minúsculas.</b></p>" : "<p><b>La cadena \""+a+"\" combina mayúsculas y minúsculas.</b></p>";
+    }
+    
+    let init = function() {
+        let a=prompt("Inserte una cadena de caracteres.");
+        document.body.innerHTML+=info(a);
+    }
 
-/**
- * Imprime por consola si la cadena contiene solo mayúsculas, solo minúsculas o ambas.
- */
-function imprimeInfo() {
-    if (mayusc && minusc) console.log("Los caracteres en la cadena \""+a+"\" son una combinación de mayúsculas y minúsculas.");
-    else (mayusc) ? console.log("En la cadena \""+a+"\" todos los caracteres son mayúsculas.") 
-        : console.log("En la cadena \""+a+"\" todos los caracteres son minúsculas.");
+    window.addEventListener("load",init);
 }
