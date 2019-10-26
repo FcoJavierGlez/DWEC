@@ -15,7 +15,7 @@
     /**
      * Hace visible el fragmento de texto oculto y oculta el enlace que da acceso a mostrar el texto.
      */
-    function muestra() {
+    let muestra = function() {
         elemento = document.getElementById("adicional");
         elemento.className = "visible";
         this.className = "oculto";
@@ -26,5 +26,5 @@
         enlace.addEventListener("click",muestra);
     }
 
-    window.addEventListener("load",init);
+    document.addEventListener("DOMContentLoaded",init);
 }

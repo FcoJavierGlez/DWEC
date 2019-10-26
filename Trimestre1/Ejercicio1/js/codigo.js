@@ -10,5 +10,5 @@
         document.body.innerHTML+="<p><b>Soy el primer script.</b></p>";
     }
 
-    window.addEventListener("load", init);
+    document.addEventListener("DOMContentLoaded", init);
 }

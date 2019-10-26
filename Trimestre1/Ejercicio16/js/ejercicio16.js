@@ -27,5 +27,5 @@
         document.addEventListener("click", informacion);
     }
 
-    window.addEventListener("load", init);
+    document.addEventListener("DOMContentLoaded", init);
 }

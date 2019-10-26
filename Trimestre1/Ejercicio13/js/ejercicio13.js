@@ -37,6 +37,6 @@
         button_annade.addEventListener("click",annade);
     }
 
-    window.addEventListener("load",init);
+    document.addEventListener("DOMContentLoaded",init);
 }
 

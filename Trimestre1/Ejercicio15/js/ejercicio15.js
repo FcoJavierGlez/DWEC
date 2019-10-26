@@ -79,7 +79,7 @@
         document.addEventListener("keypress",informacion);
     }
 
-    window.addEventListener("load",init);
+    document.addEventListener("DOMContentLoaded",init);
 }
 
 
