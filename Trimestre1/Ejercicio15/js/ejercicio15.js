@@ -11,36 +11,76 @@
  * color de fondo debe ser azul (#CCE6FF). Al volver a mover el ratón, el color de fondo vuelve
  * a ser blanco.
  * 
+ * Nota del autor: Aunque el ejercicio especifica dejar el color blanco al mostrar la información
+ * de la posición del ratón le he dejado un tono gris claro para que se vea mejor dicho evento.
+ * 
  * @author Fco Javier González Sabariego
- * @since 17/10/2019
+ * @since 17/10/2019 || actualización: 25/10/2019
  */
 {
-    let elemento=document.getElementById("info");
+    let elemento;
+
+    /**
+     * Imprime por pantalla la información pasada por parámetro en formato de array.
+     * 
+     * @param {Array} mensaje Información a imprimir en pantalla.
+     */
     let muestraInformacion=function(mensaje) {
         elemento.innerHTML = '<h1>'+mensaje[0]+'</h1>';
-        for(let i=1; i<mensaje.length; i++) {
-            elemento.innerHTML += '<p>'+mensaje[i]+'</p>';
-        }
+        for(let i=1; i<mensaje.length; i++) elemento.innerHTML += '<p>'+mensaje[i]+'</p>';
     }
 
-    let informacion=function(event) {
-        let evento = event;
+    /**
+     * En caso de que se esté moviendo el ratón, captura sus coordenadas y las muestra por pantalla.
+     * 
+     * @param {*} evento 
+     */
+    let movimientoRaton = function(evento) {
+        elemento.style.backgroundColor = '#F0F0F0';
+        muestraInformacion(["Posición del ratón", "Navegador [x,y]: [" + evento.clientX + "," + evento.clientY + "]", "Página [x,y]: [" + evento.pageX + "," + evento.pageY + "]"]);
+    }
+    
+    /**
+     * En caso de hacer click, captura las coordenadas del ratón y las muestra por pantalla.
+     * 
+     * @param {*} evento 
+     */
+    let click = function(evento) {
+        elemento.style.backgroundColor = '#FFFFCC';
+        muestraInformacion(["Click", "Navegador [x,y]: [" + evento.clientX + "," + evento.clientY + "]", "Página [x,y]: [" + evento.pageX + "," + evento.pageY + "]"]);
+    }
 
-        if (evento.type=="mousemove") {
-            elemento.style.backgroundColor='#FFF';
-            muestraInformacion(["Movimiento del ratón","Navegador [x,y]: ["+evento.clientX+","+evento.clientY+"]","Página [x,y]: ["+evento.pageX+","+evento.pageY+"]"]);
-        } else if (evento.type=="click") {
-            elemento.style.backgroundColor='#FFFFCC';
-            muestraInformacion(["Click","Navegador [x,y]: ["+evento.clientX+","+evento.clientY+"]","Página [x,y]: ["+evento.pageX+","+evento.pageY+"]"]);
-        } else if (evento.type=="keypress") {
-            elemento.style.backgroundColor='#CCE6FF';
-            muestraInformacion(["Teclado","Caracter: ["+evento.key+"]","Código: ["+evento.code+"]"]);
-        }
+    /**
+     * En caso de pulsar una tecla en el teclado muestra el caracter pulsado y su codificación por pantalla.
+     * 
+     * @param {*} evento 
+     */
+    let teclaPulsada = function(evento) {
+        elemento.style.backgroundColor = '#CCE6FF';
+        muestraInformacion(["Teclado", "Caracter: [" + evento.key + "]", "Código: [" + evento.code + "]"]);
+    }
+
+    /**
+     * En función de si se mueve el puntero del ratón o si se hace click con el mismo o, en caso,
+     * de pulsar una tecla del teclado se muestra por pantalla la información del evento.
+     * 
+     * @param {*} evento 
+     */
+    let informacion=function(evento) {
+        if (evento.type=="mousemove") movimientoRaton(evento);
+        else if (evento.type=="click") click(evento);
+        else teclaPulsada(evento);
     } 
 
-    window.onload=function() {
-        document.onmousemove = informacion;
-        document.onkeypress = informacion;
-        document.onclick = informacion;
+    let init=function() {
+        elemento = document.getElementById("info");
+        document.addEventListener("mousemove",informacion);
+        document.addEventListener("click",informacion);
+        document.addEventListener("keypress",informacion);
     }
+
+    window.addEventListener("load",init);
 }
+
+
+

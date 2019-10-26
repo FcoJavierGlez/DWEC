@@ -10,21 +10,22 @@
  * @since 08/10/2019 || actualización: 24/10/2019
  */
 {
+    let a;
+    let boton;
+
     /**
-     * Imprime por consola indicando si el número de entrada es par o no.
-     * 
-     * @param {number} a Valor numérico a comprobar su paridad.
+     * Imprime el resultado.
      */
-    function esPar(a) {
-        return (a%2==0) ? a+" es par." : a+" es impar.";
-    }
-    
-    let init = function() {
-        let a=Number.parseInt(prompt("Inserte un número entero."));
-        
-        document.body.innerHTML+=(Number.isInteger(a)) ? 
-            "<p><b>"+esPar(a)+"</b></p>" : "<p><b>"+console.log(a+" no es un número entero.")+"</b></p>"; //Si la variable es número comprueba paridad
+    let imprimeResultado = function () {
+        a = document.getElementById("num").value;
+        if (!Number.isInteger(Number.parseInt(a))) document.body.innerHTML += "<p><b>Debe introducir un número entero.</b></p>";
+        else document.body.innerHTML += (a%2==0) ? "<p><b>" + a + " es par.</b></p>" : "<p><b>" + a + " es impar.</b></p>";
     }
 
-    window.addEventListener("load",init);
+    let init = function () {
+        boton = document.getElementById("enviar");
+        boton.addEventListener("click", imprimeResultado);
+    }
+
+    document.addEventListener("DOMContentLoaded", init);
 }

@@ -9,13 +9,15 @@
 {
     let numero1 = 5;
     let numero2 = 8;
+    let documento;
+
+    let init = function() {
+        documento = document.body;
+        if(!(numero1>numero2)) documento.innerHTML += "<br/><p>"+numero1+" no es mayor que "+numero2+".</p>";
+        if(numero2>0) documento.innerHTML += "<p>"+numero2+" es positivo.</p>";
+        if(numero1<0 || numero1!=0) documento.innerHTML += "<p>"+numero1+" es negativo o distinto de cero.</p>";
+        if(!(++numero1>=numero2)) documento.innerHTML += "<p>Incrementar en 1 unidad el valor de "+numero1+" no lo hace mayor o igual que "+numero2+".</p>";
+    }
     
-    if(!(numero1>numero2)) 
-        alert("numero1 no es mayor que numero2");
-    if(numero2>0) 
-        alert("numero2 es positivo");
-    if(numero1<0 || numero1!=0) 
-        alert("numero1 es negativo o distinto de cero");
-    if(!(++numero1>=numero2)) 
-        alert("Incrementar en 1 unidad el valor de numero1 no lo hace mayor o igual que numero2");
+    document.addEventListener("DOMContentLoaded",init);
 }

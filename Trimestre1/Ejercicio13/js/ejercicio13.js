@@ -6,18 +6,37 @@
  * debe saber que al pinchar sobre el botón, se ejecuta la función llamada anade().
  * 
  * @author Fco Javier González Sabariego
- * @since 16/10/2019
+ * @since 16/10/2019 || actualización: 25/10/2019
  */
+{
+    let button_annade;
+    let texto;
+    let elemento;
+    let lista;
+    let nuevoElemento;
 
-let annade = function () {
-    let texto=document.createTextNode("Elemento de prueba");
-    let elemento=document.createElement("li");
+    /**
+     * Añade dos nuevos elementos a la lista de la página. El primero  crea nuevo elementos y los va anidando, el segundo
+     * se integra a la propia página como un texto enconsertado en una etiqueta <li></li>.
+     */
+    let annade = function () {
+        texto=document.createTextNode("Elemento introducido generando elementos y anidándolos"); //Elemento anidado
+        elemento=document.createElement("li");
 
-    elemento.appendChild(texto);
+        elemento.appendChild(texto);
 
-    let lista=document.getElementById("lista")
-    lista.appendChild(elemento);
+        lista=document.getElementById("lista")
+        lista.appendChild(elemento);
 
-    let nuevoElemento = "<li>Texto de prueba</li>";
-    lista.innerHTML = lista.innerHTML + nuevoElemento;
+        nuevoElemento = "<li>Elemento introducido con innerHTML</li>";  //Elemento tipo texto encosetado en una etiqueta <li></li>
+        lista.innerHTML = lista.innerHTML + nuevoElemento;
+    }
+
+    let init = function() {
+        button_annade = document.getElementById("button_annade");
+        button_annade.addEventListener("click",annade);
+    }
+
+    window.addEventListener("load",init);
 }
+

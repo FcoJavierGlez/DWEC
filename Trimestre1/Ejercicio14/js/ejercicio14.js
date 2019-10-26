@@ -9,16 +9,53 @@
  * @author Fco Javier González Sabariego
  * @since 17/10/2019
  */
+{
+    let enlace1;
+    let enlace2;
+    let enlace3;
+    let elemento;
 
-function muestraOculta(id) {
-    let elemento = document.getElementById("contenidos_"+id);
-    let enlace = document.getElementById("enlace_"+id);
-
-    if(elemento.style.display=="" || elemento.style.display=="block") {
-        elemento.style.display="none";
-        enlace.innerHTML = "Mostrar contenidos";
-    } else {
-        elemento.style.display="block";
-        enlace.innerHTML = "Ocultar contenidos";
+    /**
+     * Oculta el párrafo que hay sobre el enlace pulsado.
+     * 
+     * @param {*} elemento 
+     */
+    let oculta = function(elemento) {
+        elemento.style.display = "none";
+        this.innerHTML = "Mostrar contenidos";
     }
+
+    /**
+     * Muestra el párrafo oculto sobre el enlace pulsado.
+     * 
+     * @param {*} elemento 
+     */
+    let muestra = function(elemento) {
+        elemento.style.display = "block";
+        this.innerHTML = "Ocultar contenidos";
+    }
+
+    /**
+     * Muestra y/o oculta el párrafo que hay sobre el enlace seleccionado.
+     */
+    let muestraOculta = function() {
+        elemento = document.getElementById("contenidos_"+this.id);
+        if(elemento.style.display=="" || elemento.style.display=="block") oculta(elemento);
+        else muestra(elemento);
+    }
+
+    let init = function() {
+        enlace1 = document.getElementById('1');
+        enlace2 = document.getElementById('2');
+        enlace3 = document.getElementById('3');
+        enlace1.addEventListener("click", muestraOculta);
+        enlace2.addEventListener("click", muestraOculta);
+        enlace3.addEventListener("click", muestraOculta);
+    }
+
+    document.addEventListener("DOMContentLoaded",init);
 }
+
+
+
+

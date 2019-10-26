@@ -9,21 +9,25 @@
  * @since 09/10/2019 || actualización: 24/10/2019
  */
 {
+    let a;
+    let boton;
+
     /**
      * Devuelve si la cadena pasada por parámetro contiene solo mayúsculas, solo minúsculas o ambas.
      * 
      * @param {String} a Cadena pasada por parámetro
      * @return {String} Información insertada en un párrafo para ser usada con un innerHTML
      */
-    let info=function (a) {
-        if (a==a.toUpperCase()) return "<p><b>La cadena \""+a+"\" está en mayúsculas.</b></p>";
-        else return (a==a.toLowerCase()) ? "<p><b>La cadena \""+a+"\" está en minúsculas.</b></p>" : "<p><b>La cadena \""+a+"\" combina mayúsculas y minúsculas.</b></p>";
+    let imprimeResultado=function () {
+        a = document.getElementById("texto").value;
+        if (a==a.toUpperCase()) document.body.innerHTML += "<p><b>La cadena \"" + a + "\" está en mayúsculas.</b></p>";
+        else document.body.innerHTML += (a==a.toLowerCase()) ? "<p><b>La cadena \"" + a + "\" está en minúsculas.</b></p>" : "<p><b>La cadena \"" + a + "\" combina mayúsculas y minúsculas.</b></p>";
     }
     
     let init = function() {
-        let a=prompt("Inserte una cadena de caracteres.");
-        document.body.innerHTML+=info(a);
+        boton = document.getElementById("enviar");
+        boton.addEventListener("click",imprimeResultado);
     }
 
-    window.addEventListener("load",init);
+    document.addEventListener("DOMContentLoaded",init);
 }

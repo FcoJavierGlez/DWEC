@@ -6,19 +6,25 @@
  * ejecuta la función llamada muestra().
  * 
  * @author Fco Javier González Sabariego
- * @since 16/10/2019
+ * @since 16/10/2019 || actualización: 25/10/2019
  */
+{
+    let elemento;
+    let enlace;
 
-function muestra() {
-    var elemento = document.getElementById("adicional");
-    elemento.className = "visible";
-    
-    var enlace = document.getElementById("enlace");
-    enlace.className = "oculto";
+    /**
+     * Hace visible el fragmento de texto oculto y oculta el enlace que da acceso a mostrar el texto.
+     */
+    function muestra() {
+        elemento = document.getElementById("adicional");
+        elemento.className = "visible";
+        this.className = "oculto";
+    }
+
+    let init = function() {
+        enlace = document.getElementById("enlace");
+        enlace.addEventListener("click",muestra);
+    }
+
+    window.addEventListener("load",init);
 }
-
-/*window.onload = function() {
-    muestra();
-}*/ 
-
-//window.onload = () => muestra();

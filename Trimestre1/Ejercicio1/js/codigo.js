@@ -6,5 +6,9 @@
  * @since 06/10/2019  || actualizado: 24/10/2019
  */
 {
-    console.log("Soy el primer script.");
+    let init = function() {
+        document.body.innerHTML+="<p><b>Soy el primer script.</b></p>";
+    }
+
+    window.addEventListener("load", init);
 }
