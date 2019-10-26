@@ -20,9 +20,9 @@
      * 
      * @param {*} elemento 
      */
-    let oculta = function(elemento) {
+    let oculta = function(elemento,enlace) {
         elemento.style.display = "none";
-        this.innerHTML = "Mostrar contenidos";
+        enlace.innerHTML = "Mostrar contenidos";
     }
 
     /**
@@ -30,9 +30,9 @@
      * 
      * @param {*} elemento 
      */
-    let muestra = function(elemento) {
+    let muestra = function(elemento,enlace) {
         elemento.style.display = "block";
-        this.innerHTML = "Ocultar contenidos";
+        enlace.innerHTML = "Ocultar contenidos";
     }
 
     /**
@@ -40,8 +40,8 @@
      */
     let muestraOculta = function() {
         elemento = document.getElementById("contenidos_"+this.id);
-        if(elemento.style.display=="" || elemento.style.display=="block") oculta(elemento);
-        else muestra(elemento);
+        if(elemento.style.display=="" || elemento.style.display=="block") oculta(elemento, this);
+        else muestra(elemento,this);
     }
 
     let init = function() {
